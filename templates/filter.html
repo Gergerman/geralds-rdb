@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>Filter</h4>
+
+<form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+</form>
+
+{% endblock content %}

@@ -6,10 +6,24 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Rezept
 from django.db.models import Q
+from .filters import RezeptFilter
 
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
+def RezeptFilterView(request):
+    all_recipes = Rezept.objects.all().order_by('bezeichnung')
+    recipe_filter = RezeptFilter(request.GET, queryset=all_recipes)
+
+    applied_filters = ''
+    for i in request.GET:
+        val = request.GET.get(i)
+        applied_filters += f"&{i}={val}"
+
+    context = {'data': recipe_filter.qs , 'filter': recipe_filter , 'applied_filters':applied_filters}
+    return render(request, 'filter.html', context)
+
 
 class RezeptListView(ListView):
     model = Rezept

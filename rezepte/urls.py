@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (HomePageView, RezeptListView, RezeptDetailView, RezeptNeuView, 
-RezeptUpdateView, RezeptDeleteView)
+RezeptUpdateView, RezeptDeleteView, RezeptFilterView)
 # from . import views
 
 urlpatterns = [
@@ -11,4 +11,6 @@ urlpatterns = [
     path('reneu/', RezeptNeuView.as_view(), name='reneu'),
     path('rezept/<int:pk>/edit/', RezeptUpdateView.as_view(), name='reedit'),
     path('rezept/<int:pk>/delete/', RezeptDeleteView.as_view(), name='redelete'),
+
+    path('filter/', RezeptFilterView, name='rezeptfilter'),
 ]
