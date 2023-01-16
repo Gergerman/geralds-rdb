@@ -15,6 +15,8 @@ class RezeptFilter(django_filters.FilterSet):
         model = Rezept
         fields = {
             'bezeichnung': ['contains'],
-            'kategorie': ['contains']
+            'kategorie': ['contains'],
+            'kueche': ['contains'],
+            'art_zutaten': ['contains']
             }
         filter_overrides = override
