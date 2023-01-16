@@ -9,4 +9,25 @@
     <input type="submit" />
 </form>
 
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Bezeichnung</th>
+            <th>Kategorie</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in data %}
+        <tr>
+            <td>{{ r.bezeichnung }}</td>
+            <td>{{ r.kategorie }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
 {% endblock content %}
